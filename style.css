@@ -1,7 +1,7 @@
 body { background: #f5f6f8; color: #232d3b; }
 h1 { font-size: 1.8rem; margin-bottom: 12px; }
 h2 { font-size: 1.25rem; margin-bottom: 16px; }
-.panel { background: white; padding: 12px; margin-bottom: 16px; }
+.panel { background: white; padding: 12px; margin-bottom: 16px; font-size: 40; border-radius: 10; }
 /* TODO Q2-B: .panel에 서로 다른 CSS 속성 3개 이상 직접 적용하거나 변경 */
 
 

@@ -14,16 +14,17 @@
   <p>기자재를 등록하고 대여 및 반납 상태를 관리합니다.</p>
   <section id="registration" class="panel mb-4">
     <h2>대여 정보 등록</h2>
-    <form id="loanForm">
+    <form id="loanForm" class="form-label">
       <div class="mb-3">
         <label for="borrower">대여자</label>
-        <input id="borrower" name="borrower" type="text" required>
+        <input id="borrower" name="borrower" type="text" class="form-control" required>
       </div>
       <div class="mb-3">
         <label for="equipment">기자재명</label>
-        <input id="equipment" name="equipment" type="text" required>
+        <input id="equipment" name="equipment" type="text" class="form-control" required>
       </div>
       <!-- TODO Q3-A: 분류 select, 반납예정일 date 입력 요소 작성 -->
+      
       <button type="submit" id="addBtn">대여 등록</button>
     </form>
     <p id="message" aria-live="polite"></p>
@@ -32,7 +33,7 @@
     <h2>대여 현황</h2>
     <!-- TODO Q5-A: 분류 필터 select 추가 (id="categoryFilter") -->
     <div class="table-responsive">
-      <table id="loanTable">
+      <table id="loanTable" class="table table-striped table-hover table-bordered">
         <thead><tr><th>번호</th><th>대여자</th><th>기자재</th><th>분류</th><th>반납예정일</th><th>상태</th><th>관리</th></tr></thead>
         <tbody id="loanRows"></tbody>
       </table>
