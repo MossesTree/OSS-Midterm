@@ -10,6 +10,7 @@ const form = document.querySelector("#loanForm");
 const rows = document.querySelector("#loanRows");
 const summary = document.querySelector("#summary");
 const message = document.querySelector("#message");
+const submit = document.querySelector("#submit");
 
 function render(list = loans) {
   rows.innerHTML = "";
@@ -62,8 +63,39 @@ function removeLoan(id) {
 }
 
 // TODO Q3-B: submit 이벤트 처리, 유효성 검사, 새로운 객체 추가, reset, 메시지 및 render
+form.addEventListener("submit", function(e){
+  e.preventDefault();
+  const d = readForm()
+  if (!validate(d)) return;
+  add(d)
 
+  resetForm();
+  render();
+});
 
+function readForm() {
+  return { title: $("#borrower").value.trim(), author: $("#equipment").value.trim(),
+    category: $("#category").value, date: $("#dueDate").value };
+}
+
+function resetForm() {
+  form.reset();
+}
+
+function validate(d) {
+  if (d.borrower === "") { alert("이름을 입력하세요."); $("#borrower").focus(); return false; }
+  if (d.borrower.length < 2 || d.title.length > 20) { alert("이름은 2글자 이상 입력하세요."); $("#borrower").focus(); return false; }
+  if (d.category === "") { alert("카테고리를 선택하세요."); $("#category").focus(); return false; }
+  if (d.dueDate === "") { alert("반납예정일을 입력하세요."); $("#dueDate").focus(); return false; }
+  return true;
+}
+
+function add(d) {
+  if (validate(d)){
+    loans.push({ id: nextId, borrower: d.borrower, equipment: d.equipment, category: d.category, dueDate: d.dueDate, returned: false });
+    nextId++;
+  }
+}
 
 // TODO Q5-B: #categoryFilter의 change 이벤트, 분류별 filter 및 render
 
